@@ -113,4 +113,20 @@ public class EmployeeController {
         return modelAndView;
     }
 
+    @GetMapping("/findByDepartment")
+    public ModelAndView showByDepartment(@PageableDefault(value = 5) Pageable pageable,
+                                @RequestParam Optional<String> search) {
+        ModelAndView modelAndView = new ModelAndView("employee/list");
+        Page<Employee> employees;
+        if (search.isPresent()) {
+            employees = iEmployeeService.findAllByDepartment(pageable, search.get());
+            modelAndView.addObject("search", search.get());
+        } else {
+            employees = iEmployeeService.findAll(pageable);
+
+        }
+        modelAndView.addObject("employees", employees);
+        return modelAndView;
+    }
+
 }

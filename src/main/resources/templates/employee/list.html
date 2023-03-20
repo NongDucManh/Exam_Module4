@@ -14,9 +14,14 @@
 <h2><strong>List Employees</strong></h2>
 <button style="color: white; text-decoration: none"  class="btn btn-warning"><a style="text-decoration: none" th:href="@{/employees/sort-by-age?search=}">Show list employees sorted by age!</a></button>
 <div>
+    <br>
     <button style="color: white; text-decoration: none" class="btn btn-primary"><a  style="text-decoration: none; color: white" th:href="@{/employees/create}">Create new employee!</a></button>
+    <br>
+    <br>
+    <button style="color: white; text-decoration: none" class="btn btn-success"><a  style="text-decoration: none; color: white" th:href="@{/employees}">Back to home!</a></button>
 
-    <form th:action="@{/employees}" method="get">
+
+    <form th:action="@{/employees/findByDepartment}" method="get">
         <label>Search By Name:
             <input style="width: 150px; height: 30px" type="text" name="search" th:value="${search}">
         </label>

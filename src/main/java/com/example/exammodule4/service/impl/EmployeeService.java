@@ -38,13 +38,8 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public Page<Employee> findAllByDepartment(Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public Page<Employee> findAllByDepartment(Pageable pageable, Department department) {
-        return null;
+    public Page<Employee> findAllByDepartment(Pageable pageable, String department) {
+        return iEmployeeRepository.findAllByDepartment_Name(pageable, department);
     }
 
     @Override
@@ -66,4 +61,5 @@ public class EmployeeService implements IEmployeeService {
     public void delete(Long id) {
         iEmployeeRepository.deleteById(id);
     }
+
 }

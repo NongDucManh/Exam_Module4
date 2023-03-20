@@ -10,7 +10,6 @@ public interface IEmployeeService extends IGeneralService<Employee> {
     Page<Employee> findAllByName(Pageable pageable, String s);
 
     Page<Employee> findAllAndSort(Pageable pageable, String s);
-    Page<Employee> findAllByDepartment(Pageable pageable);
 
-    Page<Employee> findAllByDepartment(Pageable pageable, Department department);
+    Page<Employee> findAllByDepartment(Pageable pageable, String name);
 }
