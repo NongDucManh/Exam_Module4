@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style th:replace="/layout :: css"></style>
+</head>
+<body>
+<h1>Edit Employee</h1>
+<form id="form" th:action="@{/employees/edit/{id}(id=${employee.getId()})}" method="post" th:object="${employee}">
+  <label>Employee Code:
+    <input type="text" th:field="*{employeeCode}" required>
+    <p th:if="${#fields.hasErrors('employeeCode')}" th:errors="*{employeeCode}"></p>
+  </label>
+  <label>Name:
+    <input type="text" th:field="*{name}" required>
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+  </label>
+  <label>Age:
+    <input type="number" th:field="*{age}" required>
+    <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
+  </label>
+  <br>
+  <label>Salary:
+    <input type="text" th:field="*{salary}" required>
+    <p th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></p>
+  </label>
+  <label>Department:
+    <select th:field="*{department}">
+      <option th:each="c : ${department}" th:value="${c.getId()}" th:text="${c.getName()}"></option>
+    </select>
+  </label>
+  <button type="submit">Edit</button>
+</form>
+<h4 th:class="notify" th:if="${statusEdit}">
+  <p style="color: blue">"Edit Successfully"</p>
+</h4>
+<a th:href="@{/employees}">Back to home</a>
+</body>
+</html>
